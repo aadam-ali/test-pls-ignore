@@ -1,0 +1,10 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  validate-pipelines:
+    runs-on: ubuntu-latest
+    container: docker.elastic.co/logstash/logstash-oss:9.0.0
+    steps:
+      - name: Validate pipelines
+        run: logstash --config.test_and_exit -f $PWD/pipeline.conf --log.level error
