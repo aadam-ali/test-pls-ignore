@@ -4,8 +4,10 @@ on: [push]
 jobs:
   validate-pipelines:
     runs-on: ubuntu-latest
-    container: docker.elastic.co/logstash/logstash-oss:9.0.0
+    container:
+      image: docker.elastic.co/logstash/logstash-oss:9.0.0
+      options: --user 1000:1000
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Validate pipelines
         run: logstash --config.test_and_exit -f $PWD/pipeline.conf --log.level error
