@@ -16,4 +16,4 @@ jobs:
           docker run --rm \
             -v $PWD:/pipelines \
             docker.elastic.co/logstash/logstash-oss:9.0.0 \
-            logstash --config.test_and_exit -f /pipelines --log.level error
+            logstash --config.test_and_exit -f /pipelines/pipeline.conf --log.level error
