@@ -6,5 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     container: docker.elastic.co/logstash/logstash-oss:9.0.0
     steps:
+      - uses: actions/checkout@v4
       - name: Validate pipelines
         run: logstash --config.test_and_exit -f $PWD/pipeline.conf --log.level error
